@@ -1,3 +1,631 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
+
+export default function Home() {
+  const router = useRouter();
+  const { isAuthenticated } = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/cvs');
+    }
+  }, [isAuthenticated, router]);
+
+  return (
+    <div className="home-page">
+      <nav className="navbar">
+        <div className="nav-container">
+          <h2>CV Builder</h2>
+          <div className="nav-links">
+            <Link href="/login">
+              <a>Login</a>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <header className="hero">
+        <div className="content">
+          <h1>Create Your Professional CV Online</h1>
+          <p>Build an ATS-optimized CV in minutes. Choose from multiple templates and share instantly.</p>
+          <Link href="/login">
+            <a className="btn-primary">Get Started</a>
+          </Link>
+        </div>
+      </header>
+
+      <section className="features">
+        <h2>Why Choose CV Builder?</h2>
+        <div className="features-grid">
+          <div className="feature">
+            <h3>📝 Easy to Use</h3>
+            <p>Simple and intuitive interface</p>
+          </div>
+          <div className="feature">
+            <h3>🎨 Multiple Templates</h3>
+            <p>Professional designs to choose from</p>
+          </div>
+          <div className="feature">
+            <h3>🔗 Easy Sharing</h3>
+            <p>Share with recruiters instantly</p>
+          </div>
+          <div className="feature">
+            <h3>✅ ATS Optimized</h3>
+            <p>Pass applicant tracking systems</p>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .home-page {
+          min-height: 100vh;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+        }
+
+        .navbar {
+          background: rgba(0, 0, 0, 0.2);
+          padding: 20px 0;
+        }
+
+        .nav-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .nav-links a {
+          color: white;
+          text-decoration: none;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-weight: bold;
+        }
+
+        .hero {
+          padding: 100px 20px;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 48px;
+          margin-bottom: 20px;
+        }
+
+        .hero p {
+          font-size: 20px;
+          margin-bottom: 30px;
+          opacity: 0.9;
+        }
+
+        .btn-primary {
+          display: inline-block;
+          background: white;
+          color: #667eea;
+          padding: 12px 30px;
+          border-radius: 5px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+          padding: 80px 20px;
+          background: rgba(255, 255, 255, 0.05);
+          text-align: center;
+        }
+
+        .features h2 {
+          font-size: 36px;
+          margin-bottom: 50px;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 30px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .feature {
+          background: rgba(255, 255, 255, 0.1);
+          padding: 30px;
+          border-radius: 10px;
+          transition: all 0.3s;
+        }
+
+        .feature:hover {
+          background: rgba(255, 255, 255, 0.15);
+          transform: translateY(-5px);
+        }
+
+        .feature h3 {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        .feature p {
+          opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+          .hero h1 {
+            font-size: 32px;
+          }
+
+          .hero p {
+            font-size: 16px;
+          }
+
+          .features h2 {
+            font-size: 28px;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
+
+export default function Home() {
+  const router = useRouter();
+  const { isAuthenticated } = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/cvs');
+    }
+  }, [isAuthenticated, router]);
+
+  return (
+    <div className="home-page">
+      <nav className="navbar">
+        <div className="nav-container">
+          <h2>CV Builder</h2>
+          <div className="nav-links">
+            <Link href="/login">
+              <a>Login</a>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <header className="hero">
+        <div className="content">
+          <h1>Create Your Professional CV Online</h1>
+          <p>Build an ATS-optimized CV in minutes. Choose from multiple templates and share instantly.</p>
+          <Link href="/login">
+            <a className="btn-primary">Get Started</a>
+          </Link>
+        </div>
+      </header>
+
+      <section className="features">
+        <h2>Why Choose CV Builder?</h2>
+        <div className="features-grid">
+          <div className="feature">
+            <h3>📝 Easy to Use</h3>
+            <p>Simple and intuitive interface</p>
+          </div>
+          <div className="feature">
+            <h3>🎨 Multiple Templates</h3>
+            <p>Professional designs to choose from</p>
+          </div>
+          <div className="feature">
+            <h3>🔗 Easy Sharing</h3>
+            <p>Share with recruiters instantly</p>
+          </div>
+          <div className="feature">
+            <h3>✅ ATS Optimized</h3>
+            <p>Pass applicant tracking systems</p>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .home-page {
+          min-height: 100vh;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+        }
+
+        .navbar {
+          background: rgba(0, 0, 0, 0.2);
+          padding: 20px 0;
+        }
+
+        .nav-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .nav-links a {
+          color: white;
+          text-decoration: none;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-weight: bold;
+        }
+
+        .hero {
+          padding: 100px 20px;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 48px;
+          margin-bottom: 20px;
+        }
+
+        .hero p {
+          font-size: 20px;
+          margin-bottom: 30px;
+          opacity: 0.9;
+        }
+
+        .btn-primary {
+          display: inline-block;
+          background: white;
+          color: #667eea;
+          padding: 12px 30px;
+          border-radius: 5px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+          padding: 80px 20px;
+          background: rgba(255, 255, 255, 0.05);
+          text-align: center;
+        }
+
+        .features h2 {
+          font-size: 36px;
+          margin-bottom: 50px;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 30px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .feature {
+          background: rgba(255, 255, 255, 0.1);
+          padding: 30px;
+          border-radius: 10px;
+          transition: all 0.3s;
+        }
+
+        .feature:hover {
+          background: rgba(255, 255, 255, 0.15);
+          transform: translateY(-5px);
+        }
+
+        .feature h3 {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        .feature p {
+          opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+          .hero h1 {
+            font-size: 32px;
+          }
+
+          .hero p {
+            font-size: 16px;
+          }
+
+          .features h2 {
+            font-size: 28px;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+
+export default function Home() {
+  const router = useRouter();
+  const { isAuthenticated } = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/cvs');
+    }
+  }, [isAuthenticated, router]);
+
+  return (
+    <div className="landing-page">
+      <nav className="navbar">
+        <div className="nav-container">
+          <h2 className="logo">CV Builder</h2>
+          <div className="nav-links">
+            <Link href="/login">
+              <button className="nav-btn">Login</button>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <header className="hero">
+        <div className="hero-content">
+          <h1>Create Your Professional CV Online</h1>
+          <p>Build a stunning, ATS-optimized CV in minutes. Choose from multiple templates and share with ease.</p>
+          <div className="hero-buttons">
+            <Link href="/login">
+              <button className="btn-primary">Get Started Free</button>
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      <section className="features">
+        <div className="features-container">
+          <h2>Why Choose CV Builder?</h2>
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon">📝</div>
+              <h3>Easy to Use</h3>
+              <p>Simple and intuitive interface for creating professional CVs</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">🎨</div>
+              <h3>Multiple Templates</h3>
+              <p>Choose from various professionally designed templates</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">🔗</div>
+              <h3>Easy Sharing</h3>
+              <p>Share your CV with recruiters and employers instantly</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">✅</div>
+              <h3>ATS Optimized</h3>
+              <p>Your CV will be recognized by Applicant Tracking Systems</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="footer-content">
+          <p>&copy; 2026 CV Builder. All rights reserved.</p>
+        </div>
+      </footer>
+
+      <style jsx>{`
+        .landing-page {
+          min-height: 100vh;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+        }
+
+        .navbar {
+          background: rgba(0, 0, 0, 0.2);
+          padding: 20px 0;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+
+        .nav-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          font-size: 24px;
+          font-weight: bold;
+          margin: 0;
+        }
+
+        .nav-links {
+          display: flex;
+          gap: 20px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+          background: #f0f0f0;
+          transform: translateY(-2px);
+        }
+
+        .hero {
+          padding: 100px 20px;
+          text-align: center;
+        }
+
+        .hero-content h1 {
+          font-size: 48px;
+          margin-bottom: 20px;
+          font-weight: bold;
+        }
+
+        .hero-content p {
+          font-size: 20px;
+          margin-bottom: 30px;
+          opacity: 0.9;
+        }
+
+        .hero-buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          padding: 12px 30px;
+          font-size: 16px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+          background: white;
+          color: #667eea;
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+          background: transparent;
+          color: white;
+          border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+          background: white;
+          color: #667eea;
+        }
+
+        .features {
+          padding: 80px 20px;
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .features-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .features-container h2 {
+          font-size: 36px;
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 30px;
+        }
+
+        .feature-card {
+          text-align: center;
+          padding: 30px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+          background: rgba(255, 255, 255, 0.15);
+          transform: translateY(-5px);
+        }
+
+        .feature-icon {
+          font-size: 40px;
+          margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        .feature-card p {
+          opacity: 0.8;
+          line-height: 1.6;
+        }
+
+        .footer {
+          background: rgba(0, 0, 0, 0.3);
+          padding: 30px 20px;
+          text-align: center;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-content p {
+          margin: 0;
+          opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+          .hero-content h1 {
+            font-size: 32px;
+          }
+
+          .hero-content p {
+            font-size: 16px;
+          }
+
+          .features-container h2 {
+            font-size: 28px;
+          }
+
+          .hero-buttons {
+            flex-direction: column;
+          }
+
+          .btn-primary,
+          .btn-secondary {
+            width: 100%;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
