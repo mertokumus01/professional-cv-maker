@@ -1,0 +1,316 @@
+# Node.js CV Hazırlama Sitesi - Görevler Listesi
+
+## 1. Proje Kurulumu
+
+### 1.1 Temel Yapı Oluşturma
+- [x] Node.js ve npm yükleme doğrulaması
+- [x] Proje klasörü oluşturma
+- [x] `package.json` dosyası oluşturma
+- [x] `.gitignore` dosyası oluşturma
+- [x] Git repository başlatma
+
+### 1.2 Bağımlılıkların Kurulması
+- [x] Express.js kurulumu (Backend framework)
+- [x] React.js kurulumu (Frontend framework)
+- [x] Webpack/Babel kurulumu (Build tools)
+- [x] Nodemon kurulumu (Development server reload)
+- [x] Dotenv kurulumu (Ortam değişkenleri)
+
+## 2. Dosya Yapısı Oluşturma
+
+- [x] `/src` klasörü oluşturma
+- [x] `/src/server` klasörü (Backend kodları)
+- [x] `/src/client` klasörü (Frontend kodları)
+- [x] `/src/models` klasörü (Veri modelleri)
+- [x] `/src/routes` klasörü (API rotaları)
+- [x] `/src/components` klasörü (React bileşenleri)
+- [x] `/public` klasörü (Statik dosyalar)
+- [x] `/tests` klasörü (Test dosyaları)
+- [x] `/config` klasörü (Yapılandırma dosyaları)
+
+## 3. Backend Geliştirme
+
+### 3.1 Server Konfigürasyonu
+- [x] Express server oluşturma
+- [x] Port yapılandırması (port 5000)
+- [x] CORS ayarları
+- [x] Middleware konfigürasyonu
+- [x] Static file serving ayarları
+
+### 3.2 Database Kurulumu
+- [x] MongoDB/PostgreSQL seçimi
+- [x] Database bağlantısı (Models oluşturuldu)
+- [x] Connection pool yapılandırması
+- [x] Schema/Model tanımlaması (User, CV models)
+
+### 3.3 API Endpoints Geliştirme
+- [x] GET `/api/cvs` - Tüm CV'leri listele (Placeholder)
+- [x] POST `/api/cvs` - Yeni CV oluştur (Placeholder)
+- [x] GET `/api/cvs/:id` - Spesifik CV getir (Placeholder)
+- [x] PUT `/api/cvs/:id` - CV güncelle (Placeholder)
+- [x] DELETE `/api/cvs/:id` - CV sil (Placeholder)
+- [x] POST `/api/auth/login` - Kullanıcı giriş (Placeholder)
+- [x] POST `/api/auth/register` - Kullanıcı kayıt (Placeholder)
+- [x] GET `/api/auth/profile` - Profil getir (Placeholder)
+
+### 3.4 Veri Validasyonu
+- [x] Input validation middleware
+- [x] Email validation
+- [x] Form field validasyonu
+- [x] Error handling middleware
+- [ ] Input sanitization (XSS koruması)
+- [ ] CSRF token implementasyonu
+- [x] Rate limiting middleware
+- [ ] Request body size limits
+
+### 3.5 Güvenlik Özellikleri
+- [ ] Password strength validation
+- [ ] Account lockout mekanizması (failed login attempts)
+- [ ] Two-factor authentication (2FA)
+- [ ] Email verification sistemi
+- [ ] Password reset functionality
+- [ ] Session management
+- [ ] API key generation ve management
+
+## 4. Frontend Geliştirme
+
+### 4.1 UI Bileşenleri
+- [ ] Header/Navbar bileşeni
+- [ ] Footer bileşeni
+- [ ] Form bileşenleri
+- [ ] CV Template bileşenleri
+- [ ] Button ve Icon bileşenleri
+
+### 4.2 Sayfalar
+- [ ] Anasayfa oluşturma
+- [ ] CV Listesi sayfası
+- [ ] CV Oluşturma/Düzenleme sayfası
+- [ ] CV Önizleme sayfası
+- [ ] Kullanıcı Profili sayfası
+- [ ] Login/Register sayfası
+
+### 4.3 State Management
+- [ ] Redux store yapılandırması
+- [ ] Actions tanımlaması
+- [ ] Reducers tanımlaması
+- [ ] Selectors oluşturma
+
+### 4.4 Styling
+- [ ] CSS/SCSS yapısını kurma
+- [ ] Responsive design uygulaması
+- [ ] Theme ayarları (Dark/Light mode)
+- [ ] Component styling
+- [ ] Print styles (CV yazdırma için)
+
+### 4.5 Ekstra Özellikler
+- [ ] Multi-language desteği (i18n)
+- [ ] CV şablon seçenekleri (farklı templates)
+- [ ] CV versiyonlama sistemi
+- [ ] Otomatik kaydetme (auto-save)
+- [ ] Undo/Redo functionality
+
+## 5. Kimlik Doğrulama ve Yetkilendirme
+
+- [ ] JWT token implementasyonu
+- [ ] Password hashing (bcrypt)
+- [ ] Login state yönetimi
+- [ ] Protected routes oluşturma
+- [ ] Token refresh mekanizması
+- [ ] Logout işleminin implementasyonu
+- [ ] Social login (Google, GitHub OAuth2)
+- [ ] Email verification sistemi
+- [ ] Password reset email gönderimi
+
+## 6. Testing Süreçleri
+
+### 6.1 Unit Testleri
+- [ ] Jest kurulumu
+- [ ] Backend unit testleri yazma
+- [ ] Frontend unit testleri yazma
+- [ ] Test coverage %80+ hedefleme
+
+### 6.2 Integration Testleri
+- [ ] API endpoint testleri
+- [ ] Database işlemleri testleri
+- [ ] Authentication flow testleri
+
+### 6.3 E2E Testleri
+- [ ] Cypress/Selenium kurulumu
+- [ ] Kullanıcı akışı testleri
+- [ ] Form submission testleri
+- [ ] CV oluşturma flow testleri
+
+### 6.4 Test Automation
+- [ ] Test scripts yazma (package.json)
+- [ ] CI/CD pipeline kurulumu
+- [ ] Automated test runs
+- [ ] Test result reporting
+
+## 7. Dosya Yönetimi ve Export
+
+### 7.1 Dosya Yükleme
+- [ ] Profil fotoğrafı yükleme
+- [ ] Dosya upload validator
+- [ ] File size limits
+- [ ] Allowed file types check
+- [ ] Cloud storage integration (AWS S3/Google Cloud)
+- [ ] Dosya silme işlemi
+
+### 7.2 PDF Export Özelliği
+- [ ] PDF kütüphanesi kurulumu (pdfkit/puppeteer)
+- [ ] CV to PDF conversion fonksiyonu
+- [ ] PDF styling ve formatting
+- [ ] Download functionality
+- [ ] Email ile PDF gönderme
+
+### 7.3 Diğer Export Formatları
+- [ ] JSON export
+- [ ] CSV export
+- [ ] Word document export (.docx)
+
+## 8. Deployment Hazırlığı
+
+### 8.1 Üretim Optimizasyonu
+- [ ] Minification ayarları
+- [ ] Bundle optimization
+- [ ] Environment variables yapılandırması
+- [ ] Security headers ekleme
+
+### 8.2 Server Deployment
+- [ ] Heroku/AWS/Azure seçimi
+- [ ] Deployment configuration
+- [ ] Database migration
+- [ ] SSL certificate kurulumu
+
+### 8.3 Frontend Deployment
+- [ ] Static site hosting (Netlify/Vercel)
+- [ ] Build pipeline yapılandırması
+- [ ] CDN konfigürasyonu
+- [ ] Caching strategies
+
+## 8.4 SEO Optimizasyonu
+- [ ] Meta tags ve Open Graph yapılandırması
+- [ ] Sitemap.xml oluşturma
+- [ ] Robots.txt yapılandırması
+- [ ] SEO friendly URL structure
+- [ ] Schema.org structured data
+- [ ] Canonical tags
+
+## 9. Arama ve Filtreleme
+
+- [ ] CV arama fonksiyonu (full-text search)
+- [ ] Filter capabilities (tarih, kategori, vb.)
+- [ ] Search autocomplete
+- [ ] Advanced search options
+- [ ] Search result pagination
+
+## 10. Monitoring, Logging ve Analytics
+
+- [ ] Winston/Pino logger kurulumu
+- [ ] Error logging implementasyonu
+- [ ] User activity logging
+- [ ] Application performance monitoring (APM)
+- [ ] Log rotation ayarları
+- [ ] Google Analytics entegrasyonu
+- [ ] Heatmap tracking
+- [ ] User behavior analytics
+
+## 11. Email ve Bildirimler
+
+- [ ] Email service setup (Nodemailer/SendGrid)
+- [ ] Welcome email template
+- [ ] CV created notification
+- [ ] Password reset email
+- [ ] In-app notifications sistemi
+- [ ] Notification preferences
+- [ ] Unsubscribe functionality
+
+## 12. Caching ve Performans Optimizasyonu
+
+- [ ] Redis kurulumu ve konfigürasyonu
+- [ ] Cache stratejisi
+- [ ] Database query caching
+- [ ] API response caching
+- [ ] Browser caching headers
+- [ ] Image optimization ve lazy loading
+- [ ] Database indexing stratejisi
+
+## 13. Backup ve Veri Kurtarma
+
+- [ ] Automatic backup scheduling
+- [ ] Database backup restore
+- [ ] File backup and recovery
+- [ ] Disaster recovery plan
+- [ ] Data retention policy
+- [ ] GDPR compliance (veri silme)
+- [ ] Data export for users
+
+## 14. Dokümantasyon
+
+- [ ] API dokumentasyonu (Swagger/OpenAPI)
+- [ ] README dosyası yazma
+- [ ] Installation guide
+- [ ] Development guide
+- [ ] Deployment guide
+- [ ] Code commenting
+- [ ] Troubleshooting guide
+- [ ] FAQ sayfası
+
+## 15. Kalite Kontrol ve Güvenlik
+
+- [ ] Code linting (ESLint)
+- [ ] Code formatting (Prettier)
+- [ ] Security scanning (npm audit)
+- [ ] OWASP vulnerability check
+- [ ] Performance testing
+- [ ] Load testing
+- [ ] SQL injection protection
+- [ ] Dependency vulnerability scanning
+
+## 16. Nihai Kontrol Listesi
+
+- [ ] Tüm unit testler geçti
+- [ ] Tüm integration testler geçti
+- [ ] Tüm E2E testler geçti
+- [ ] Code review tamamlandı
+- [ ] Security audit tamamlandı
+- [ ] Performance audit tamamlandı
+- [ ] Dokümantasyon tamamlandı ve güncel
+- [ ] Backup sistemi test edildi
+- [ ] Disaster recovery planı test edildi
+- [ ] User acceptance testing tamamlandı
+- [ ] Production deployment hazır
+- [ ] Monitoring alerts yapılandırıldı
+- [ ] Support documentation hazır
+
+---
+
+## Notlar
+
+- Her görev tamamlandıktan sonra kutuyu işaretleyin: `[x]`
+- Görevler temelinde sırasıyla tamamlanmalıdır (önceki görevler bitmeden sonraki başlanmamalıdır)
+- Her ana bölüm bir sprint olarak düşünülebilir (1-2 hafta)
+- Testler her aşamada çalıştırılmalıdır
+- Güvenlik görevleri (authentication, validation, etc.) öncelik olmalıdır
+- Performans testleri deployment öncesinde yapılmalıdır
+- Tüm API endpoints detaylı belgelendirilmelidir
+- Environment variables secure şekilde yönetilmelidir
+- Loglar düzenli olarak kontrol edilmelidir
+
+## Tahmini Proje Süresi
+
+- **Proje Kurulumu**: 1-2 gün
+- **Backend Geliştirme**: 2-3 hafta
+- **Frontend Geliştirme**: 2-3 hafta  
+- **Testing**: 1-2 hafta
+- **Deployment & DevOps**: 1 hafta
+- **Total**: ~8-11 hafta
+
+## Önemli Başlangıç Adımları
+
+1. Proje kurulumu yapılmalı
+2. Database schema tasarlanmalı
+3. API kontratları tanımlanmalı
+4. Frontend routing yapısı planlanmalı
+5. Authentication stratejisi belirlenmeliydi
+
