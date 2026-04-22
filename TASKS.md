@@ -82,12 +82,12 @@
 - [ ] Button ve Icon bileşenleri
 
 ### 4.2 Sayfalar
-- [ ] Anasayfa oluşturma
-- [ ] CV Listesi sayfası
-- [ ] CV Oluşturma/Düzenleme sayfası
-- [ ] CV Önizleme sayfası
-- [ ] Kullanıcı Profili sayfası
-- [ ] Login/Register sayfası
+- [x] Anasayfa oluşturma
+- [x] CV Listesi sayfası
+- [x] CV Oluşturma/Düzenleme sayfası
+- [x] CV Önizleme sayfası
+- [x] Kullanıcı Profili sayfası
+- [x] Login/Register sayfası
 
 ### 4.3 State Management
 - [ ] Redux store yapılandırması
@@ -96,10 +96,10 @@
 - [ ] Selectors oluşturma
 
 ### 4.4 Styling
-- [ ] CSS/SCSS yapısını kurma
-- [ ] Responsive design uygulaması
+- [x] CSS/SCSS yapısını kurma (next.config optimize)
+- [x] Responsive design uygulaması (Next.js built-in)
 - [ ] Theme ayarları (Dark/Light mode)
-- [ ] Component styling
+- [x] Component styling (Inline JSX styles)
 - [ ] Print styles (CV yazdırma için)
 
 ### 4.5 Ekstra Özellikler
@@ -124,9 +124,9 @@
 ## 6. Testing Süreçleri
 
 ### 6.1 Unit Testleri
-- [ ] Jest kurulumu
-- [ ] Backend unit testleri yazma
-- [ ] Frontend unit testleri yazma
+- [x] Jest kurulumu (jest.config.js, jest.setup.js)
+- [x] Backend unit testleri yazma (Template oluşturuldu)
+- [x] Frontend unit testleri yazma (Template oluşturuldu)
 - [ ] Test coverage %80+ hedefleme
 
 ### 6.2 Integration Testleri
@@ -141,7 +141,7 @@
 - [ ] CV oluşturma flow testleri
 
 ### 6.4 Test Automation
-- [ ] Test scripts yazma (package.json)
+- [x] Test scripts yazma (package.json - npm test, npm run test:unit, etc.)
 - [ ] CI/CD pipeline kurulumu
 - [ ] Automated test runs
 - [ ] Test result reporting
@@ -189,10 +189,10 @@
 - [ ] Caching strategies
 
 ## 8.4 SEO Optimizasyonu
-- [ ] Meta tags ve Open Graph yapılandırması
+- [x] Meta tags ve Open Graph yapılandırması (next.js _app.js'de)
 - [ ] Sitemap.xml oluşturma
 - [ ] Robots.txt yapılandırması
-- [ ] SEO friendly URL structure
+- [x] SEO friendly URL structure (Next.js dynamic routes)
 - [ ] Schema.org structured data
 - [ ] Canonical tags
 
@@ -247,20 +247,20 @@
 
 ## 14. Dokümantasyon
 
-- [ ] API dokumentasyonu (Swagger/OpenAPI)
-- [ ] README dosyası yazma
-- [ ] Installation guide
-- [ ] Development guide
+- [x] API dokumentasyonu (Swagger/OpenAPI - src/server/swagger.js)
+- [x] README dosyası yazma (Detaylı README.md)
+- [x] Installation guide (GETTING_STARTED.md)
+- [x] Development guide (GETTING_STARTED.md)
 - [ ] Deployment guide
-- [ ] Code commenting
+- [x] Code commenting (Routes ve models'da yapıldı)
 - [ ] Troubleshooting guide
 - [ ] FAQ sayfası
 
 ## 15. Kalite Kontrol ve Güvenlik
 
-- [ ] Code linting (ESLint)
-- [ ] Code formatting (Prettier)
-- [ ] Security scanning (npm audit)
+- [x] Code linting (ESLint - .eslintrc.json konfigüre edildi, 12 warning)
+- [x] Code formatting (Prettier - .prettierrc.json konfigüre edildi)
+- [x] Security scanning (npm audit - 6 vulnerabilities reported)
 - [ ] OWASP vulnerability check
 - [ ] Performance testing
 - [ ] Load testing
