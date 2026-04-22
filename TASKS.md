@@ -82,12 +82,12 @@
 - [ ] Button ve Icon bileşenleri
 
 ### 4.2 Sayfalar
-- [x] Anasayfa oluşturma
-- [x] CV Listesi sayfası
-- [x] CV Oluşturma/Düzenleme sayfası
-- [x] CV Önizleme sayfası
-- [x] Kullanıcı Profili sayfası
-- [x] Login/Register sayfası
+- [x] Anasayfa oluşturma (Tamamlandı)
+- [x] CV Listesi sayfası (Tamamlandı)
+- [x] CV Oluşturma/Düzenleme sayfası (Tamamlandı)
+- [x] CV Önizleme sayfası (Tamamlandı)
+- [x] Kullanıcı Profili sayfası (Tamamlandı)
+- [x] Login/Register sayfası (Tamamlandı)
 
 ### 4.3 State Management
 - [ ] Redux store yapılandırması
@@ -96,8 +96,8 @@
 - [ ] Selectors oluşturma
 
 ### 4.4 Styling
-- [x] CSS/SCSS yapısını kurma (next.config optimize)
-- [x] Responsive design uygulaması (Next.js built-in)
+- [x] CSS/SCSS yapısını kurma (next.config optimize - Tamamlandı)
+- [x] Responsive design uygulaması (Next.js built-in - Tamamlandı)
 - [ ] Theme ayarları (Dark/Light mode)
 - [x] Component styling (Inline JSX styles)
 - [ ] Print styles (CV yazdırma için)
