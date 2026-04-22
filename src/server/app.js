@@ -8,11 +8,13 @@ require('dotenv').config();
 const config = require('../../config/config');
 const errorHandler = require('../middleware/errorHandler');
 const requestLogger = require('../middleware/requestLogger');
+const { sanitizeInput } = require('../middleware/securityMiddleware');
 
 const app = express();
 
 // ==================== Security Middleware ====================
 app.use(helmet());
+app.use(sanitizeInput);
 
 // ==================== CORS ====================
 app.use(cors(config.cors));
