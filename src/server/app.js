@@ -9,6 +9,7 @@ const config = require('../../config/config');
 const errorHandler = require('../middleware/errorHandler');
 const requestLogger = require('../middleware/requestLogger');
 const { sanitizeInput } = require('../middleware/securityMiddleware');
+const { csrfTokenGenerator, csrfTokenValidator } = require('../middleware/csrfMiddleware');
 
 const app = express();
 
@@ -33,6 +34,10 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // ==================== Logging ====================
 app.use(requestLogger);
+
+// ==================== CSRF Token Middleware ====================
+app.use(csrfTokenGenerator);
+app.use(csrfTokenValidator);
 
 // ==================== Static Files ====================
 app.use(express.static(path.join(__dirname, '../../public')));

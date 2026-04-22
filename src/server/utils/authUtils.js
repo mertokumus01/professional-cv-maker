@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const config = require('../../../config/config');
 const logger = require('./logger');
 
@@ -19,6 +20,20 @@ const generateRefreshToken = (userId) => {
     config.jwt.refreshSecret,
     { expiresIn: config.jwt.refreshExpire }
   );
+};
+
+/**
+ * Generate Email Verification Token
+ */
+const generateVerificationToken = () => {
+  return crypto.randomBytes(32).toString('hex');
+};
+
+/**
+ * Generate Password Reset Token
+ */
+const generateResetToken = () => {
+  return crypto.randomBytes(32).toString('hex');
 };
 
 /**
@@ -51,6 +66,8 @@ const verifyToken = (token, secret = config.jwt.secret) => {
 module.exports = {
   generateToken,
   generateRefreshToken,
+  generateVerificationToken,
+  generateResetToken,
   hashPassword,
   comparePassword,
   verifyToken,

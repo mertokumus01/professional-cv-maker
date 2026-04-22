@@ -77,6 +77,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    googleId: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: true,
+    },
+    githubId: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: true,
+    },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,

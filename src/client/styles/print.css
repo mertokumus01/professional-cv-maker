@@ -1,0 +1,186 @@
+/* Print Specific Styles for CV */
+
+@media print {
+  /* Hide all non-printable elements */
+  .navbar,
+  .footer,
+  .sidebar,
+  .btn-group,
+  .theme-toggle,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 0.5in;
+    size: A4;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: black;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  /* CV Container */
+  .cv-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    background: white;
+  }
+
+  .cv-header {
+    text-align: center;
+    margin-bottom: 12pt;
+    page-break-after: avoid;
+  }
+
+  .cv-name {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 6pt;
+  }
+
+  .cv-contact {
+    font-size: 9pt;
+    margin-bottom: 6pt;
+  }
+
+  .cv-summary {
+    font-size: 10pt;
+    margin-bottom: 12pt;
+    page-break-after: avoid;
+  }
+
+  /* Sections */
+  .cv-section {
+    margin-bottom: 12pt;
+    page-break-inside: avoid;
+  }
+
+  .cv-section-title {
+    font-size: 12pt;
+    font-weight: bold;
+    border-bottom: 1pt solid #000;
+    margin-bottom: 6pt;
+    page-break-after: avoid;
+  }
+
+  .cv-section-entry {
+    margin-bottom: 8pt;
+    page-break-inside: avoid;
+  }
+
+  .cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    page-break-after: avoid;
+  }
+
+  .cv-entry-title {
+    font-weight: bold;
+    font-size: 10pt;
+  }
+
+  .cv-entry-date {
+    font-size: 10pt;
+    color: #555;
+  }
+
+  .cv-entry-organization {
+    font-style: italic;
+    font-size: 10pt;
+    color: #555;
+  }
+
+  .cv-entry-description {
+    margin-top: 4pt;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin: 6pt 0;
+    padding-left: 18pt;
+    page-break-inside: avoid;
+  }
+
+  li {
+    margin-bottom: 3pt;
+    page-break-inside: avoid;
+  }
+
+  /* Skills */
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6pt;
+  }
+
+  .skill-badge {
+    background: #e0e0e0;
+    border: 1pt solid #999;
+    border-radius: 3pt;
+    padding: 2pt 6pt;
+    font-size: 9pt;
+    display: inline-block;
+  }
+
+  /* Links */
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* Remove colors */
+  * {
+    color: black !important;
+    background: white !important;
+    box-shadow: none !important;
+    border-color: #000 !important;
+  }
+
+  /* Ensure proper text rendering */
+  text {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Page breaks */
+  .page-break {
+    page-break-after: always;
+  }
+
+  /* Avoid breaking important content */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Adjust for margins */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}

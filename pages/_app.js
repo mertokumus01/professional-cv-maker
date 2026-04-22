@@ -3,8 +3,10 @@ import Head from 'next/head';
 import { Provider, useDispatch } from 'react-redux';
 import store from '../src/redux/store';
 import { verifyToken } from '../src/redux/slices/authSlice';
-
-// TODO: Import i18n, global styles
+import { ThemeProvider } from '../src/client/context/ThemeContext';
+import '../src/client/i18n/i18n';
+import '../src/client/styles/globals.css';
+import '../src/client/styles/print.css';
 
 function AppContent({ Component, pageProps }) {
   const dispatch = useDispatch();
@@ -92,7 +94,9 @@ function AppContent({ Component, pageProps }) {
 function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <AppContent Component={Component} pageProps={pageProps} />
+      <ThemeProvider>
+        <AppContent Component={Component} pageProps={pageProps} />
+      </ThemeProvider>
     </Provider>
   );
 }
