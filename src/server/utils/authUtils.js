@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const config = require('../../config/config');
-const logger = require('../server/utils/logger');
+const config = require('../../../config/config');
+const logger = require('./logger');
 
 /**
  * Generate JWT Token

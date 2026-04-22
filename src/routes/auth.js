@@ -171,7 +171,7 @@ router.post('/refresh-token', (req, res) => {
     }
 
     // Verify refresh token
-    const decoded = require('../server/utils/authUtils').verifyToken(refreshToken, require('../../config/config').jwt.refreshSecret);
+    const decoded = authUtils.verifyToken(refreshToken, config.jwt.refreshSecret);
 
     if (!decoded) {
       return res.status(401).json({
