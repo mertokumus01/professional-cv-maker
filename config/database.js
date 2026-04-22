@@ -1,14 +1,12 @@
 require('dotenv').config();
+const path = require('path');
 
 module.exports = {
   development: {
-    username: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD || 'postgres',
-    database: process.env.DB_NAME || 'cv_builder_db',
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 5432,
-    dialect: process.env.DB_DIALECT || 'postgres',
-    logging: console.log,
+    // SQLite for development testing
+    dialect: 'sqlite',
+    storage: path.join(__dirname, '../cv_builder.db'),
+    logging: false, // Set to console.log for debugging SQL
     pool: {
       max: 5,
       min: 0,
@@ -17,12 +15,9 @@ module.exports = {
     },
   },
   test: {
-    username: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD || 'postgres',
-    database: process.env.DB_NAME || 'cv_builder_test_db',
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 5432,
-    dialect: process.env.DB_DIALECT || 'postgres',
+    // SQLite in-memory for testing
+    dialect: 'sqlite',
+    storage: ':memory:',
     logging: false,
     pool: {
       max: 5,
@@ -37,7 +32,7 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
+    dialect: process.env.DB_DIALECT || 'postgres',
     logging: false,
     pool: {
       max: 10,
