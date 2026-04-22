@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
+import { Provider, useDispatch } from 'react-redux';
+import store from '../src/redux/store';
+import { verifyToken } from '../src/redux/slices/authSlice';
 
-// TODO: Import Redux Provider, i18n, global styles
+// TODO: Import i18n, global styles
 
-function MyApp({ Component, pageProps }) {
+function AppContent({ Component, pageProps }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Verify token on app load
+    dispatch(verifyToken());
+  }, [dispatch]);
+
   return (
     <>
       <Head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <title>CV Builder - Create Your Professional CV</title>
@@ -79,4 +89,12 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+function App({ Component, pageProps }) {
+  return (
+    <Provider store={store}>
+      <AppContent Component={Component} pageProps={pageProps} />
+    </Provider>
+  );
+}
+
+export default App;
