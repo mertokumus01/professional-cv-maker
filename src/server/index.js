@@ -4,25 +4,36 @@ require('dotenv').config();
 const app = require('./app');
 const config = require('../../config/config');
 const logger = require('./utils/logger');
-
-// TODO: Database connection setup
-// const { sequelize } = require('../models');
+const { sequelize } = require('../models');
 
 const server = http.createServer(app);
 
 const PORT = config.port;
 
-// ==================== Server Startup ====================
-server.listen(PORT, () => {
-  logger.info(`🚀 Server is running on port ${PORT}`);
-  logger.info(`🌍 Environment: ${config.nodeEnv}`);
-  logger.info(`📝 API Base URL: http://localhost:${PORT}/api`);
-  
-  // TODO: Connect to database
-  // sequelize.sync({ alter: config.nodeEnv === 'development' })
-  //   .then(() => logger.info('📊 Database synchronized'))
-  //   .catch((err) => logger.error('Database sync error:', err));
-});
+// ==================== Database Connection ====================
+async function startServer() {
+  try {
+    // Test database connection
+    await sequelize.authenticate();
+    logger.info('📊 Database connection established');
+
+    // Sync database models
+    await sequelize.sync({ alter: config.nodeEnv === 'development' });
+    logger.info('📊 Database models synchronized');
+
+    // Start server
+    server.listen(PORT, () => {
+      logger.info(`🚀 Server is running on port ${PORT}`);
+      logger.info(`🌍 Environment: ${config.nodeEnv}`);
+      logger.info(`📝 API Base URL: http://localhost:${PORT}/api`);
+    });
+  } catch (error) {
+    logger.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
+
+startServer();
 
 // ==================== Graceful Shutdown ====================
 process.on('SIGTERM', () => {

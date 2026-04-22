@@ -44,14 +44,14 @@
 - [x] Schema/Model tanımlaması (User, CV models)
 
 ### 3.3 API Endpoints Geliştirme
-- [x] GET `/api/cvs` - Tüm CV'leri listele (Placeholder)
-- [x] POST `/api/cvs` - Yeni CV oluştur (Placeholder)
-- [x] GET `/api/cvs/:id` - Spesifik CV getir (Placeholder)
-- [x] PUT `/api/cvs/:id` - CV güncelle (Placeholder)
-- [x] DELETE `/api/cvs/:id` - CV sil (Placeholder)
-- [x] POST `/api/auth/login` - Kullanıcı giriş (Placeholder)
-- [x] POST `/api/auth/register` - Kullanıcı kayıt (Placeholder)
-- [x] GET `/api/auth/profile` - Profil getir (Placeholder)
+- [x] GET `/api/cvs` - Tüm CV'leri listele (Tamamlandı)
+- [x] POST `/api/cvs` - Yeni CV oluştur (Tamamlandı)
+- [x] GET `/api/cvs/:id` - Spesifik CV getir (Tamamlandı)
+- [x] PUT `/api/cvs/:id` - CV güncelle (Tamamlandı)
+- [x] DELETE `/api/cvs/:id` - CV sil (Tamamlandı)
+- [x] POST `/api/auth/login` - Kullanıcı giriş (Tamamlandı)
+- [x] POST `/api/auth/register` - Kullanıcı kayıt (Tamamlandı)
+- [x] GET `/api/auth/profile` - Profil getir (Tamamlandı)
 
 ### 3.4 Veri Validasyonu
 - [x] Input validation middleware
@@ -111,12 +111,12 @@
 
 ## 5. Kimlik Doğrulama ve Yetkilendirme
 
-- [ ] JWT token implementasyonu
-- [ ] Password hashing (bcrypt)
-- [ ] Login state yönetimi
-- [ ] Protected routes oluşturma
-- [ ] Token refresh mekanizması
-- [ ] Logout işleminin implementasyonu
+- [x] JWT token implementasyonu (Tamamlandı)
+- [x] Password hashing (bcrypt) - Tamamlandı
+- [x] Login state yönetimi (Tamamlandı)
+- [x] Protected routes oluşturma (Tamamlandı)
+- [x] Token refresh mekanizması (Tamamlandı)
+- [x] Logout işleminin implementasyonu (Tamamlandı)
 - [ ] Social login (Google, GitHub OAuth2)
 - [ ] Email verification sistemi
 - [ ] Password reset email gönderimi
