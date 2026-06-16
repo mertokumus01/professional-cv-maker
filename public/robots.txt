@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Allow: /api/cvs/share/
+
+User-agent: Googlebot
+Allow: /
+Allow: /api/cvs/share/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Allow: /api/cvs/share/
+Disallow: /api/
+
+# Specific bot restrictions
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://example.com/sitemap.xml
+
+# General crawl delay
+Crawl-delay: 1

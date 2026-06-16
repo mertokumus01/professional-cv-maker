@@ -1,14 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCVs } from '../src/redux/slices/cvSlice';
+import SearchFilter from '../src/client/components/SearchFilter';
+import Pagination from '../src/client/components/Pagination';
+import { apiClient } from '../src/client/utils/apiClient';
 
 export default function CvList() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector(state => state.auth);
   const { cvs, loading, error } = useSelector(state => state.cv);
+  const [filteredCVs, setFilteredCVs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginationData, setPaginationData] = useState({
+    total: 0,
+    perPage: 10,
+    totalPages: 1,
+  });
+  const [searchActive, setSearchActive] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -17,6 +28,57 @@ export default function CvList() {
     }
     dispatch(fetchCVs());
   }, [isAuthenticated, dispatch, router]);
+
+  const handleSearch = async (filters) => {
+    try {
+      setCurrentPage(1);
+      const params = new URLSearchParams();
+
+      if (filters.q) params.append('q', filters.q);
+      if (filters.template) params.append('template', filters.template);
+      if (filters.createdDateFrom) params.append('createdDateFrom', filters.createdDateFrom);
+      if (filters.createdDateTo) params.append('createdDateTo', filters.createdDateTo);
+      params.append('limit', 10);
+      params.append('page', 1);
+
+      const response = await apiClient.get(`/cvs/search?${params.toString()}`);
+
+      if (response.data.success) {
+        setFilteredCVs(response.data.data);
+        setPaginationData(response.data.pagination);
+        setSearchActive(true);
+      }
+    } catch (error) {
+      console.error('Search error:', error);
+    }
+  };
+
+  const handlePageChange = async (page) => {
+    try {
+      setCurrentPage(page);
+
+      // Get current filters from state or make a regular request
+      const params = new URLSearchParams();
+      params.append('limit', 10);
+      params.append('page', page);
+
+      const response = await apiClient.get(`/cvs?${params.toString()}`);
+
+      if (response.data.success) {
+        setFilteredCVs(response.data.data);
+        setPaginationData(response.data.pagination);
+      }
+    } catch (error) {
+      console.error('Pagination error:', error);
+    }
+  };
+
+  if (!isAuthenticated) {
+    return <div>Redirecting...</div>;
+  }
+
+  const displayCVs = searchActive ? filteredCVs : cvs;
+  const displayPagination = searchActive ? paginationData : { total: cvs.length, perPage: 10, totalPages: Math.ceil(cvs.length / 10) };
 
   if (!isAuthenticated) {
     return <div>Redirecting...</div>;
@@ -33,9 +95,14 @@ export default function CvList() {
 
       {error && <div className="error-message">{error}</div>}
 
+      {/* Search and Filter */}
+      {!loading && cvs.length > 0 && (
+        <SearchFilter onSearch={handleSearch} />
+      )}
+
       {loading ? (
         <div className="loading">Loading CVs...</div>
-      ) : cvs.length === 0 ? (
+      ) : displayCVs.length === 0 ? (
         <div className="empty-state">
           <p>You haven't created any CVs yet</p>
           <Link href="/create">
@@ -43,9 +110,10 @@ export default function CvList() {
           </Link>
         </div>
       ) : (
-        <div className="cvs-grid">
-          {cvs.map(cv => (
-            <div key={cv.id} className="cv-card">
+        <div>
+          <div className="cvs-grid">
+            {displayCVs.map(cv => (
+              <div key={cv.id} className="cv-card">
               <div className="cv-card-header">
                 <h3>{cv.title}</h3>
                 <span className={`template-badge ${cv.template}`}>{cv.template}</span>
@@ -63,7 +131,17 @@ export default function CvList() {
               </div>
             </div>
           ))}
-        </div>
+            </div>
+
+            {/* Pagination */}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={displayPagination.totalPages || 1}
+              totalItems={displayPagination.total || 0}
+              pageSize={displayPagination.perPage || 10}
+              onPageChange={handlePageChange}
+            />
+          </div>
       )}
 
       <style jsx>{`

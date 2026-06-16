@@ -87,6 +87,14 @@ module.exports = (sequelize) => {
       unique: true,
       allowNull: true,
     },
+    failedLoginAttempts: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    accountLockedUntil: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,

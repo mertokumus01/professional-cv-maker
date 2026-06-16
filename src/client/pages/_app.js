@@ -1,9 +1,64 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-// TODO: Import Redux Provider, i18n, global styles
-
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Lazy load analytics only on client side
+    const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+    
+    if (gaId) {
+      // Dynamic import for analytics
+      import('../utils/analyticsClient').then((mod) => {
+        const analyticsClient = mod.default || mod;
+        analyticsClient.initialize(gaId);
+        analyticsClient.pageView(router.pathname, document.title);
+      });
+    }
+
+    // Initialize heatmap tracking if enabled
+    const isHeatmapEnabled = process.env.NEXT_PUBLIC_HEATMAP_ENABLED === 'true';
+    if (isHeatmapEnabled) {
+      import('../utils/heatmapTracking').then((mod) => {
+        const heatmapTracking = mod.default || mod;
+        heatmapTracking.initialize(true);
+
+        // Send tracking data on page unload
+        const handleBeforeUnload = () => {
+          heatmapTracking.sendTrackingData();
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+      });
+    }
+  }, []);
+
+  // Track route changes
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+      if (gaId) {
+        import('../utils/analyticsClient').then((mod) => {
+          const analyticsClient = mod.default || mod;
+          if (analyticsClient.isInitialized) {
+            analyticsClient.pageView(url, document.title);
+          }
+        });
+      }
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <>
       <Head>

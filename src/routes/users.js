@@ -3,8 +3,9 @@ const router = express.Router();
 const logger = require('../server/utils/logger');
 const { verifyToken } = require('../middleware/authMiddleware');
 const { validationRules, handleValidationErrors } = require('../middleware/validationMiddleware');
-const { User } = require('../models');
+const { User, CV } = require('../models');
 const { comparePassword, hashPassword } = require('../server/utils/authUtils');
+const { generateSitemap } = require('../server/utils/seoService');
 
 /**
  * @route   GET /api/users/profile
@@ -233,6 +234,72 @@ router.delete('/account', verifyToken, async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to delete account',
+    });
+  }
+});
+
+/**
+ * @route   GET /api/seo/sitemap.xml
+ * @desc    Generate sitemap for SEO
+ * @access  Public
+ */
+router.get('/seo/sitemap.xml', async (req, res) => {
+  try {
+    logger.info('Generating sitemap');
+
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // Create URL list
+    const urls = [
+      {
+        loc: `${baseUrl}/`,
+        changefreq: 'daily',
+        priority: '1.0',
+      },
+      {
+        loc: `${baseUrl}/login`,
+        changefreq: 'monthly',
+        priority: '0.8',
+      },
+      {
+        loc: `${baseUrl}/cvs`,
+        changefreq: 'weekly',
+        priority: '0.9',
+      },
+    ];
+
+    // Add public CV share URLs
+    try {
+      const publicCVs = await CV.findAll({
+        where: { isPublic: true },
+        attributes: ['id', 'updatedAt'],
+        limit: 50000, // Sitemap limit
+      });
+
+      publicCVs.forEach((cv) => {
+        urls.push({
+          loc: `${baseUrl}/share/${cv.id}`,
+          lastmod: cv.updatedAt.toISOString().split('T')[0],
+          changefreq: 'weekly',
+          priority: '0.7',
+        });
+      });
+    } catch (error) {
+      logger.warn('Failed to fetch public CVs for sitemap:', error);
+    }
+
+    // Generate sitemap
+    const sitemap = generateSitemap(urls);
+
+    res.type('application/xml');
+    res.send(sitemap);
+
+    logger.info('Sitemap generated successfully');
+  } catch (error) {
+    logger.error('Sitemap generation error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to generate sitemap',
     });
   }
 });

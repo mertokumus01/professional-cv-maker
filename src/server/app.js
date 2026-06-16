@@ -55,10 +55,14 @@ app.get('/api/health', (req, res) => {
 const authRoutes = require('../routes/auth');
 const cvRoutes = require('../routes/cvs');
 const userRoutes = require('../routes/users');
+const analyticsRoutes = require('../routes/analytics');
+const notificationRoutes = require('../routes/notifications');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/cvs', cvRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // ==================== Error Handler ====================
 app.use(errorHandler);

@@ -24,6 +24,8 @@ const sequelize = new Sequelize(
 // Load models
 const User = require('./User')(sequelize);
 const CV = require('./CV')(sequelize);
+const Session = require('./Session')(sequelize);
+const ApiKey = require('./ApiKey')(sequelize);
 
 // Define associations
 User.hasMany(CV, {
@@ -37,9 +39,33 @@ CV.belongsTo(User, {
   as: 'user',
 });
 
+User.hasMany(Session, {
+  foreignKey: 'userId',
+  as: 'sessions',
+  onDelete: 'CASCADE',
+});
+
+Session.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'user',
+});
+
+User.hasMany(ApiKey, {
+  foreignKey: 'userId',
+  as: 'apiKeys',
+  onDelete: 'CASCADE',
+});
+
+ApiKey.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'user',
+});
+
 // Export
 module.exports = {
   sequelize,
   User,
   CV,
+  Session,
+  ApiKey,
 };
